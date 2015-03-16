@@ -3,8 +3,17 @@
 
 <polymer-element name="my-element" noscript>
   <template>
-    <span>I'm <b>my-element</b>. This is my Shadow DOM.</span>
+    <span>I'm <b>my-element</b>. This is my Shadow DOM. And its for {{owner}}.</span>
     <core-ajax url="/json.html" auto response="{{resp}}"></core-ajax>
     <textarea value="{{resp}}"></textarea>
+    <div id="thePerson">Waiting...</div>
   </template>
+  <script>
+    Polymer({
+        owner: "Someone",
+        ready: function () {
+            this.$.thePerson.textContent = this.owner + " thinks this is cool."
+        }
+    });
+  </script>
 </polymer-element>
