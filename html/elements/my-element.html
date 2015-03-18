@@ -1,13 +1,13 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 
-<polymer-element name="my-element" noscript>
+<polymer-element name="my-element" noscript attributes="color owner">
   <template>
     <span>I'm <b>my-element</b>. This is my Shadow DOM. And its for {{owner}}.</span>
     <core-ajax url="/json.html" auto response="{{resp}}"></core-ajax>
     <textarea value="{{resp}}"></textarea>
     <div id="thePerson" style="color: {{color}}">Waiting...</div>
-
+    <button on-click="{{setFocus}}">Set focus on owner</button>
     <input id="nameInput" value="{{owner}}"
            placeholder="Enter name..."></p>
 
@@ -16,8 +16,20 @@
     Polymer({
         owner: "Someone",
         color: "red",
+        typed: true,
         ready: function () {
             this.$.thePerson.textContent = this.owner + " thinks this is cool."
+        },
+        ownerChanged:  function () {
+            if (this.typed) {
+                this.color = "blue";
+            } else {
+                this.color = "black";
+            }
+            this.typed = !this.typed;
+        },
+        setFocus: function () {
+            this.$.nameInput.focus();
         }
     });
   </script>
