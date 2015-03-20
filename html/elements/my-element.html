@@ -8,6 +8,7 @@
     <textarea value="{{resp}}"></textarea>
     <div id="thePerson" style="color: {{color}}">Waiting...</div>
     <button on-click="{{setFocus}}">Set focus on owner</button>
+    <button on-click="{{cloneThis}}">Clone this</button>
     <input id="nameInput" value="{{owner}}"
            placeholder="Enter name..."></p>
 
@@ -30,6 +31,10 @@
         },
         setFocus: function () {
             this.$.nameInput.focus();
+        },
+        cloneThis: function () {
+            var el = document.createElement('my-element');
+            document.body.appendChild(el);
         }
     });
   </script>
