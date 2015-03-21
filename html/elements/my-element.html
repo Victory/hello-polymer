@@ -9,6 +9,7 @@
     <div id="thePerson" style="color: {{color}}">Waiting...</div>
     <button on-click="{{setFocus}}">Set focus on owner</button>
     <button on-click="{{cloneThis}}">Clone this</button>
+    <button on-click="{{deleteThis}}" id="deleteButton">Delete this</button>
     <input id="nameInput" value="{{owner}}"
            placeholder="Enter name..."></p>
 
@@ -19,7 +20,22 @@
         color: "red",
         typed: true,
         ready: function () {
+
             this.$.thePerson.textContent = this.owner + " thinks this is cool."
+        },
+        attached: function () {
+            this.hideOrShowDelete();
+        },
+        detached: function () {
+            this.hideOrShowDelete();
+        },
+        hideOrShowDelete: function () {
+            var display = (this.numMyElements() > 1) ? "inline-block" : "none";
+            var elms = document.getElementsByTagName('my-element');
+            for (var ii = 0; ii < elms.length; ii++) {
+                console.log(ii);
+                elms[ii].$.deleteButton.style.display = display;
+            }
         },
         ownerChanged:  function () {
             if (this.typed) {
@@ -35,6 +51,12 @@
         cloneThis: function () {
             var el = document.createElement('my-element');
             document.body.appendChild(el);
+        },
+        deleteThis: function () {
+            this.remove();
+        },
+        numMyElements: function () {
+            return document.getElementsByTagName('my-element').length;
         }
     });
   </script>

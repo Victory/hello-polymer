@@ -10,12 +10,10 @@
     </head>
 
     <body>
-        <my-element color="green"></my-element>
-
-
-        <my-element color="#FF00FF"></my-element>
-
-        <button onclick="var el = document.createElement('my-element'); document.body.appendChild(el)">
+        <div id="myElements">
+            <my-element color="green"></my-element>
+        </div>
+        <button onclick="var el = document.createElement('my-element'); document.getElementById('myElements').appendChild(el)">
             Click to add element
         </button>
     </body>
