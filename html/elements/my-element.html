@@ -4,14 +4,14 @@
 <polymer-element name="my-element" noscript attributes="color owner">
   <template>
     <div style="{{ {color:'red', background: '#efefef'} | styleObject }}">
-        <span>I'm <b>my-element</b>. This is my Shadow DOM. And its for {{owner}}.</span>
+        <span>I'm <b>my-element</b>. This is my Shadow DOM. And its for {{owner | plusOne}}.</span>
         <core-ajax url="/json.html" auto response="{{resp}}"></core-ajax>
         <textarea value="{{resp}}" style="display:block"></textarea>
         <div id="thePerson" style="color: {{color}}">Waiting...</div>
         <button on-click="{{setFocus}}">Set focus on owner</button>
         <button on-click="{{cloneThis}}">Clone this</button>
         <button on-click="{{deleteThis}}" id="deleteButton">{{deleteText}}</button>
-        <input id="nameInput" value="{{owner | toUpperCase}}"
+        <input id="nameInput" value="{{owner | toUpperCase }}"
                placeholder="Enter name...">
     </div>
   </template>
@@ -67,5 +67,10 @@
             }
         },
     });
+
+    PolymerExpressions.prototype.plusOne = function (val) {
+        return val + " one ";
+    };
+
   </script>
 </polymer-element>
