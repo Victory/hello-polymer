@@ -14,6 +14,11 @@
         <input id="nameInput" value="{{owner | toUpperCase }}"
                placeholder="Enter name...">
     </div>
+    <table>
+        <tr template repeat="{{tr in rows}}">
+            <td>{{tr}}</td>
+        </tr>
+    </table>
   </template>
   <script>
     Polymer({
@@ -21,6 +26,7 @@
         color: "red",
         typed: true,
         deleteText: "Delete This",
+        rows: [1, 2, 3],
         ready: function () {
             this.$.thePerson.textContent = this.owner + " thinks this is cool."
         },
