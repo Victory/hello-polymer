@@ -10,8 +10,8 @@
         <div id="thePerson" style="color: {{color}}">Waiting...</div>
         <button on-click="{{setFocus}}">Set focus on owner</button>
         <button on-click="{{cloneThis}}">Clone this</button>
-        <button on-click="{{deleteThis}}" id="deleteButton">Delete this</button>
-        <input id="nameInput" value="{{owner}}"
+        <button on-click="{{deleteThis}}" id="deleteButton">{{deleteText}}</button>
+        <input id="nameInput" value="{{owner | toUpperCase}}"
                placeholder="Enter name...">
     </div>
   </template>
@@ -20,6 +20,7 @@
         owner: "Someone",
         color: "red",
         typed: true,
+        deleteText: "Delete This",
         ready: function () {
             this.$.thePerson.textContent = this.owner + " thinks this is cool."
         },
@@ -33,7 +34,6 @@
             var display = (this.numMyElements() > 1) ? "inline-block" : "none";
             var elms = document.getElementsByTagName('my-element');
             for (var ii = 0; ii < elms.length; ii++) {
-                console.log(ii);
                 elms[ii].$.deleteButton.style.display = display;
             }
         },
@@ -57,7 +57,16 @@
         },
         numMyElements: function () {
             return document.getElementsByTagName('my-element').length;
-        }
+        },
+        toUpperCase: {
+            toDOM: function (val) {
+                console.log("toDOM");
+                return val.toUpperCase();
+            },
+            toModel: function (val) {
+                return val.toUpperCase();
+            }
+        },
     });
   </script>
 </polymer-element>
