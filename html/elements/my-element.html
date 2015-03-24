@@ -54,11 +54,15 @@
         setFocus: function () {
             this.$.nameInput.focus();
         },
-        cloneThis: function () {
+        cloneThis: function(evt, detail, sender) {
             var el = document.createElement('my-element');
             document.body.appendChild(el);
+
+            var noticeTag = document.createElement('span');
+            noticeTag.textContent = " - CLONED";
+            sender.insertBefore(noticeTag);
         },
-        deleteThis: function () {
+        deleteThis: function (evt, detail, sender) {
             this.remove();
         },
         numMyElements: function () {
