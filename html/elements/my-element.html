@@ -8,7 +8,7 @@
         <core-ajax url="/json.html" auto response="{{resp}}"></core-ajax>
         <textarea value="{{resp}}" style="display:block"></textarea>
         <div id="thePerson" style="color: {{color}}">Waiting...</div>
-        <button on-click="{{setFocus}}">Set focus on owner</button>
+        <button on-click="{{setFocus}}" hidden?="{{moreThanOne}}">Set focus on owner</button>
         <button on-click="{{cloneThis}}">Clone this</button>
         <button on-click="{{deleteThis}}" id="deleteButton">{{deleteText}}</button>
         <input id="nameInput" value="{{owner | toUpperCase }}"
@@ -27,11 +27,14 @@
         typed: true,
         deleteText: "Delete This",
         rows: [1, 2, 3],
+        moreThanOne: false,
         ready: function () {
+
             this.$.thePerson.textContent = this.owner + " thinks this is cool."
         },
         attached: function () {
             this.hideOrShowDelete();
+            this.moreThanOne = this.isMoreThanOneMyElement();
         },
         detached: function () {
             this.hideOrShowDelete();
@@ -67,6 +70,9 @@
         },
         numMyElements: function () {
             return document.getElementsByTagName('my-element').length;
+        },
+        isMoreThanOneMyElement: function () {
+            return this.numMyElements() < 2;
         },
         toUpperCase: {
             toDOM: function (val) {
