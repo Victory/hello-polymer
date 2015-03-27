@@ -13,6 +13,8 @@
         <button on-click="{{deleteThis}}" id="deleteButton">{{deleteText}}</button>
         <input id="nameInput" value="{{owner | toUpperCase }}"
                placeholder="Enter name...">
+        <input id="oneTime" value="[[onetime]]" placeholder="One time deal..." />
+        <input id="somethingDeep" />
     </div>
     <table>
         <tr template repeat="{{tr in rows}}">
@@ -28,9 +30,15 @@
         deleteText: "Delete This",
         rows: [1, 2, 3],
         moreThanOne: false,
+        onetime: "just once",
+        deep: {
+            something: {
+                deep: "",
+            }
+        },
         ready: function () {
-
             this.$.thePerson.textContent = this.owner + " thinks this is cool."
+            this.$.somethingDeep.bind('value', new PathObserver(this.deep, 'something.deep'));
         },
         attached: function () {
             this.hideOrShowDelete();
@@ -38,6 +46,7 @@
         },
         detached: function () {
             this.hideOrShowDelete();
+
         },
         hideOrShowDelete: function () {
             var display = (this.numMyElements() > 1) ? "inline-block" : "none";
@@ -53,6 +62,7 @@
                 this.color = "black";
             }
             this.typed = !this.typed;
+            this.deep.something.deep = "the color is " + this.color;
         },
         observe: {
             owner: 'toggleTextColor',
