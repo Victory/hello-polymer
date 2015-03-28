@@ -1,0 +1,17 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="listening-element" noscript>
+  <template>
+  	<div>
+  		<p>
+  		I hear {{owner}}
+  		</p>
+  	</div>
+  </template>
+  <script>
+  	Polymer({
+        owner: "unset",
+    });
+  </script>
+</polymer-element>

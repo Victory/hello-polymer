@@ -81,6 +81,11 @@
                 sender.insertBefore(noticeTag);
                 this.rows.push("cloned");
             }
+
+            Polymer.import(['elements/listening-element.html'], function() {
+                document.querySelector('listening-element').owner = this.owner;
+            }.bind(this));
+
         },
         deleteThis: function (evt, detail, sender) {
             this.remove();
