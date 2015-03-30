@@ -6,17 +6,11 @@
         Hello Polymer
         </title>
         <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-        <link rel="import" href="elements/my-element.html">
+        <link rel="import" href="elements/my-app.html">
     </head>
 
     <body>
-        <listening-element>
-            This is unknown on load
-        </listening-element>
-
-        <div id="myElements">
-            <my-element color="green"></my-element>
-        </div>
+        <my-app></my-app>
         <button onclick="var el = document.createElement('my-element'); document.getElementById('myElements').appendChild(el)">
             Click to add element
         </button>

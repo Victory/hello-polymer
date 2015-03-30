@@ -64,8 +64,11 @@
             this.typed = !this.typed;
             this.deep.something.deep = "the color is " + this.color;
         },
+        updateListeningElement: function (oldValue, newValue) {
+            this.toggleTextColor(oldValue, newValue);
+        },
         observe: {
-            owner: 'toggleTextColor',
+            owner: 'updateListeningElement',
             rows:  'toggleTextColor',
         },
         setFocus: function () {
@@ -81,11 +84,6 @@
                 sender.insertBefore(noticeTag);
                 this.rows.push("cloned");
             }
-
-            Polymer.import(['elements/listening-element.html'], function() {
-                document.querySelector('listening-element').owner = this.owner;
-            }.bind(this));
-
         },
         deleteThis: function (evt, detail, sender) {
             this.remove();

@@ -1,0 +1,22 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="my-element.html">
+<link rel="import" href="listening-element.html">
+
+<polymer-element name="my-app" noscript>
+  <template>
+        <listening-element owner="{{owner}}">
+            This is unknown on load
+        </listening-element>
+
+        <div id="myElements">
+            <my-element color="green" owner="{{owner}}"></my-element>
+        </div>
+  </template>
+  <script>
+  Polymer({
+
+    owner: "now they are bound",
+  });
+  </script>
+</polymer-element>
