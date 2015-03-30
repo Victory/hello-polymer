@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 
-<polymer-element name="listening-element" noscript attributes="owner">
+<polymer-element name="listening-element" noscript attributes="owner numChanges" on-wow="{{ownerChanged}}">
   <template>
     <div>
         <p>
@@ -11,12 +11,7 @@
     </div>
   </template>
   <script>
-    Polymer({
-        owner: "nada",
-        numChanges: 0,
-        ownerChanged: function (oldValue, newValue) {
-            this.numChanges++;
-        }
+    Polymer('listening-element', {
     });
   </script>
 </polymer-element>

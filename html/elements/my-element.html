@@ -28,7 +28,6 @@
         color: "red",
         typed: true,
         deleteText: "Delete This",
-        rows: [1, 2, 3],
         moreThanOne: false,
         onetime: "just once",
         deep: {
@@ -66,23 +65,22 @@
         },
         updateListeningElement: function (oldValue, newValue) {
             this.toggleTextColor(oldValue, newValue);
+            this.fire('wow');
         },
         observe: {
             owner: 'updateListeningElement',
-            rows:  'toggleTextColor',
         },
         setFocus: function () {
             this.$.nameInput.focus();
         },
         cloneThis: function(evt, detail, sender) {
             var el = document.createElement('my-element');
-            document.body.appendChild(el);
+            document.querySelector('my-app').$.myElements.appendChild(el);
 
             if (sender.textContent.indexOf("CLONED") < 0) {
                 var noticeTag = document.createElement('span');
                 noticeTag.textContent = " - CLONED";
                 sender.insertBefore(noticeTag);
-                this.rows.push("cloned");
             }
         },
         deleteThis: function (evt, detail, sender) {

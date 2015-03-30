@@ -1,22 +1,25 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
-<link rel="import" href="my-element.html">
-<link rel="import" href="listening-element.html">
+<link rel="import" href="my-element.html?v=2">
+<link rel="import" href="listening-element.html?v=2">
 
-<polymer-element name="my-app" noscript>
+<polymer-element name="my-app" noscript numChanges="0" on-wow="{{doWow}}">
   <template>
-        <listening-element owner="{{owner}}">
+        <listening-element owner="{{owner}}" numChanges="{{numChanges}}">
             This is unknown on load
         </listening-element>
-
         <div id="myElements">
             <my-element color="green" owner="{{owner}}"></my-element>
         </div>
   </template>
   <script>
-  Polymer({
-
-    owner: "now they are bound",
+  Polymer('my-app', {
+    numChanges: 0,
+    numChangesChanged: function () {
+    },
+    doWow: function () {
+        this.numChanges++;
+    }
   });
   </script>
 </polymer-element>
