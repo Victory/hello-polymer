@@ -8,12 +8,12 @@
         <core-ajax url="/json.html" auto response="{{resp}}"></core-ajax>
         <textarea value="{{resp}}" style="display:block"></textarea>
         <div id="thePerson" style="color: {{color}}">Waiting...</div>
-        <div layout horizontal>
+        <div layout horizontal justified>
             <button on-click="{{setFocus}}" hidden?="{{moreThanOne}}">Set focus on owner</button>
             <button on-click="{{cloneThis}}">Clone this</button>
             <button on-click="{{deleteThis}}" id="deleteButton">{{deleteText}}</button>
             <input id="nameInput" value="{{owner | toUpperCase }}"
-                   placeholder="Enter name..." flex>
+                   placeholder="Enter name...">
             <input id="oneTime" value="[[onetime]]" placeholder="One time deal..." />
             <input id="somethingDeep" />
         </div>
