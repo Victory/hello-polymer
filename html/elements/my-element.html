@@ -12,6 +12,7 @@
             <button on-click="{{setFocus}}" hidden?="{{moreThanOne}}">Set focus on owner</button>
             <button on-click="{{cloneThis}}">Clone this</button>
             <button on-click="{{deleteThis}}" id="deleteButton">{{deleteText}}</button>
+            <button on-holdpulse="{{holdPulser}}" on-up="{{touchUp}}">Hold Pulse</button>
             <input id="nameInput" value="{{owner | toUpperCase }}"
                    placeholder="Enter name...">
             <input id="oneTime" value="[[onetime]]" placeholder="One time deal..." />
@@ -94,6 +95,12 @@
         },
         isMoreThanOneMyElement: function () {
             return this.numMyElements() < 2;
+        },
+        holdPulser: function (evt) {
+            evt.target.style.color = 'red';
+        },
+        touchUp: function (evt) {
+            evt.target.style.color = 'black';
         },
         toUpperCase: {
             toDOM: function (val) {
