@@ -79,6 +79,7 @@
         },
         cloneThis: function(evt, detail, sender) {
             var el = document.createElement('my-element');
+            el.setAttribute('owner', this.owner);
             document.querySelector('my-app').$.myElements.appendChild(el);
 
             if (sender.textContent.indexOf("CLONED") < 0) {
