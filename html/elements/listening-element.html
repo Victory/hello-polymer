@@ -5,9 +5,16 @@
   <template>
     <div>
         <p>
-        I hear "{{owner | plusOne}}."
+        I hear "{{owner | plusOne | plusTwo}}."
         Number of changes {{numChanges}}
         </p>
     </div>
   </template>
+  <script>
+  Polymer('listening-element', {
+    plusTwo: function (before) {
+        return before + " after";
+    },
+  });
+  </script>
 </polymer-element>
