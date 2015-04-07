@@ -5,14 +5,16 @@
         <title>
         Hello Polymer
         </title>
+
         <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
         <link rel="import" href="elements/my-app.html">
+        <link rel="import" href="elements/paper-cloner.html">
     </head>
 
     <body>
         <my-app></my-app>
-        <button onclick="var el = document.createElement('my-element'); document.getElementById('myElements').appendChild(el)">
-            Click to add element
-        </button>
+
+        <paper-cloner raised on-tap="{{cloneMyElement}}">clone</paper-cloner>
+
     </body>
 </html>

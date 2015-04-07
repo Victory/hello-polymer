@@ -1,0 +1,21 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<polymer-element name="paper-cloner" noscript extends="paper-button">
+    <template>
+        <paper-button on-tap="{{cloneMyElement}}">Clone</paper-button>
+    </template>
+
+    <script type="text/javascript">
+        Polymer('paper-cloner', {
+            cloneMyElement: function (val) {
+                console.log('val', val);
+                var el = document.createElement('my-element');
+                document.getElementById('myElements').appendChild(el)
+            },
+        });
+    </script>
+
+
+</polymer-element>
