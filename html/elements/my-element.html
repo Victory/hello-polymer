@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 
 <polymer-element name="my-element" noscript attributes="color owner">
   <template>
@@ -9,14 +10,23 @@
         <textarea value="{{resp}}" style="display:block"></textarea>
         <div id="thePerson" style="color: {{color}}">Waiting...</div>
         <div layout horizontal justified>
-            <button on-click="{{setFocus}}" hidden?="{{moreThanOne}}">Set focus on owner</button>
-            <button on-click="{{cloneThis}}">Clone this</button>
+            <paper-button raised on-click="{{setFocus}}" hidden?="{{moreThanOne}}">Set focus on owner</paper-button>
+            <paper-button raised on-click="{{cloneThis}}">Clone this</paper-button>
+
+
             <button on-click="{{deleteThis}}" id="deleteButton">{{deleteText}}</button>
             <button on-holdpulse="{{holdPulser}}" on-up="{{touchUp}}">Hold Pulse</button>
-            <input id="nameInput" value="{{owner | toUpperCase }}"
-                   placeholder="Enter name...">
-            <input id="oneTime" value="[[onetime]]" placeholder="One time deal..." />
-            <input id="somethingDeep" />
+        </div>
+
+        <div>
+            <paper-input id="nameInput" value="{{owner | toUpperCase }}"
+                   placeholder="Enter name..." />
+        </div>
+        <div>
+            <paper-input id="oneTime" value="[[onetime]]" placeholder="One time deal..." /> 
+        </div>
+        <div>
+            <paper-input id="somethingDeep" /> <br>
         </div>
     </div>
     <table>
@@ -27,7 +37,7 @@
   </template>
   <script>
     Polymer({
-        mainStyle: {color:'red', background: '#efefef', height: '120px', 'margin-bottom': '5px', padding: '3px'},
+        mainStyle: {color:'red', background: '#efefef', 'margin-bottom': '5px', padding: '3px'},
         owner: "Someone",
         color: "red",
         typed: true,
@@ -118,4 +128,10 @@
     };
 
   </script>
+
+  <style>
+  paper-button {
+    background: #defefe;
+  }
+  </style>
 </polymer-element>
