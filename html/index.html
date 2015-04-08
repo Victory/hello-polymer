@@ -6,7 +6,9 @@
         Hello Polymer
         </title>
 
-        <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+        <script type="text/javascript">console.profile("Your new profiler");</script>
+        <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        <script type="text/javascript">console.profileEnd();</script>
         <link rel="import" href="elements/my-app.html">
         <link rel="import" href="elements/paper-cloner.html">
     </head>
@@ -14,7 +16,7 @@
     <body>
         <my-app></my-app>
 
-        <paper-cloner raised on-tap="{{cloneMyElement}}">clone</paper-cloner>
+        <paper-cloner raised colored on-tap="{{cloneMyElement}}">clone</paper-cloner>
 
     </body>
 </html>
