@@ -18,15 +18,18 @@
             <button on-holdpulse="{{holdPulser}}" on-up="{{touchUp}}">Hold Pulse</button>
         </div>
 
-        <div>
-            <paper-input id="nameInput" value="{{owner | toUpperCase }}"
-                   placeholder="Enter name..." />
-        </div>
-        <div>
-            <paper-input id="oneTime" value="[[onetime]]" placeholder="One time deal..." /> 
-        </div>
-        <div>
-            <paper-input id="somethingDeep" /> <br>
+
+        <div layout horizontal justified>
+            <div>
+                <paper-input id="nameInput" value="{{owner | toUpperCase }}"
+                       placeholder="Enter name..." />
+            </div>
+            <div>
+                <paper-input id="oneTime" value="[[onetime]]" placeholder="One time deal..." />
+            </div>
+            <div>
+                <paper-input id="somethingDeep" /> <br>
+            </div>
         </div>
     </div>
     <table>
