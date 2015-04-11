@@ -52,8 +52,7 @@
         left: 1440px;
         top: 610px;
       }
-      #core_card {
-        position: absolute;
+      .core_card {
         width: 300px;
         height: 300px;
         border-radius: 2px;
@@ -61,6 +60,7 @@
         left: 270px;
         top: 80px;
         background-color: rgb(255, 255, 255);
+        margin: 30px;
       }
       #paper_toast {
         left: 0px;
@@ -98,10 +98,18 @@
         <paper-fab icon="av:play-arrow" id="paper_fab"></paper-fab>
       </core-header-panel>
       <div id="div" tool>Title</div>
-      <core-card id="core_card" layout vertical>
-        <paper-button id="paper_button1">button</paper-button>
-        <paper-radio-button checked label="Radio Button" toggles id="paper_radio_button"></paper-radio-button>
+      <core-card class="core_card" layout vertical>
+        Card 1
+        <paper-button>button</paper-button>
+        <paper-radio-button checked label="Radio Button" toggles></paper-radio-button>
       </core-card>
+
+      <core-card class="core_card" layout vertical>
+        Card 1
+        <paper-button>button</paper-button>
+        <paper-radio-button checked label="Radio Button" toggles></paper-radio-button>
+      </core-card>
+
     </core-scaffold>
   </template>
 
