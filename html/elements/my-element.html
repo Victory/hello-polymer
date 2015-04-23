@@ -10,7 +10,10 @@
         <textarea value="{{resp}}" style="display:block"></textarea>
         <div id="thePerson" style="color: {{color}}">Waiting...</div>
         <div layout horizontal justified>
-            <paper-button raised on-click="{{setFocus}}" hidden?="{{moreThanOne}}">Set focus on owner</paper-button>
+            <paper-button
+                raised
+                on-click="{{setFocus}}"
+                hidden?="{{moreThanOne}}">Set focus on owner</paper-button>
             <paper-button id="cloneThisButton" raised on-click="{{cloneThis}}">Clone this</paper-button>
 
 
@@ -91,6 +94,8 @@
             this.$.nameInput.focus();
         },
         cloneThis: function(evt, detail, sender) {
+            this.$.cloneThisButton.className = ' slideDown';
+
             var el = document.createElement('my-element');
             el.setAttribute('owner', this.owner);
             document.querySelector('my-app').$.myElements.appendChild(el);
@@ -135,6 +140,31 @@
   <style>
     paper-button {
         background: #defefe;
+    }
+
+    .slideDown {
+        animation-name: slideDown;
+        animation-duration: 1s;
+        animation-timeing-function: ease-out;
+        visibility: visible !import;
+    }
+
+    @keyframes slideDown {
+        0% {
+            transform: translateY(100%);
+        }
+        25% {
+            transform: translateY(75%);
+        }
+        50% {
+            transform: translateY(50%);
+        }
+        75% {
+            transform: translateY(25%);
+        }
+        100% {
+            transform: translateY(0%);
+        }
     }
 
     #cloneThisButton:hover {
